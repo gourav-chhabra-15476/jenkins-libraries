@@ -30,8 +30,6 @@ def helmDeploy(Map args) {
 
 
     def String namespace
-    def String repository
-    echo "Application repo name ${args.repository}"
     // If namespace isn't parsed into the function set the namespace to the name
     if (args.namespace == null) {
         namespace = "default"
