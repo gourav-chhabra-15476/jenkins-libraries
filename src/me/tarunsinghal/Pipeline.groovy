@@ -49,7 +49,7 @@ def helmDeploy(Map args) {
 
         // reimplement --wait once it works reliable
         if (args.repository == null) {
-        sh "helm upgrade --install ${args.name} ${args.chart_dir} --set image.tag=${args.version_tag} --namespace=${namespace}"
+        sh "helm upgrade --install ${args.name} ${args.chart_dir} --set image.tag=${args.version_tag} --set image.repository=${args.repository} --namespace=${namespace}"
     } else {
         sh "helm upgrade --install ${args.name} ${args.chart_dir} --set image.tag=${args.version_tag} --set image.repository=${args.repository} --namespace=${namespace}"
     }
