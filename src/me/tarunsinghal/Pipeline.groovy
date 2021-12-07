@@ -30,6 +30,7 @@ def helmDeploy(Map args) {
 
 
     def String namespace
+    def String repository
 
     // If namespace isn't parsed into the function set the namespace to the name
     if (args.namespace == null) {
