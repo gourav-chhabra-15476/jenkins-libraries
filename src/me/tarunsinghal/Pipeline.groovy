@@ -47,7 +47,12 @@ def helmDeploy(Map args) {
         println "Running deployment"
 
         // reimplement --wait once it works reliable
+    if (args.repository == null) {
+        sh "helm upgrade --install ${args.name} ${args.chart_dir} --set image.tag=${args.version_tag} --set image.repository=${args.repository} --namespace=${namespace}"
+    } else {
         sh "helm upgrade --install ${args.name} ${args.chart_dir} --set image.tag=${args.version_tag} --namespace=${namespace}"
+    }
+        //sh "helm upgrade --install ${args.name} ${args.chart_dir} --set image.tag=${args.version_tag} --namespace=${namespace}"
 // 	    if (namespace == "default"){
 // 		  sh "helm upgrade --install ${args.name} ${args.chart_dir} --set image.tag=${args.version_tag} --set imagePullSecrets[0].name=regcred --namespace=${namespace} --kubeconfig=/var/lib/jenkins/.kube/confignew"
 // 	    }
